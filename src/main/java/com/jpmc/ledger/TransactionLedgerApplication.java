@@ -1,4 +1,4 @@
-package com.jmpc.ledger;
+package com.jpmc.ledger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
