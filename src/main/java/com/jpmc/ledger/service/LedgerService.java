@@ -1,6 +1,7 @@
 package com.jpmc.ledger.service;
 
 import com.jpmc.ledger.dto.CreateAccountRequest;
+import com.jpmc.ledger.dto.DepositRequest;
 import com.jpmc.ledger.dto.TransferRequest;
 import com.jpmc.ledger.entity.Account;
 import com.jpmc.ledger.entity.Transaction;
@@ -31,6 +32,13 @@ public class LedgerService {
     }
 
     @Transactional
+    public Account deposit(String accountId, DepositRequest request) {
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> new RuntimeException("Account not found: " + accountId));
+        account.setBalance(account.getBalance().add(request.getAmount()));
+        return accountRepository.save(account);
+    }
+
     public Transaction transfer(TransferRequest request) {
         Account from = accountRepository.findById(request.getFromAccountId())
                 .orElseThrow(() -> new RuntimeException("Source account not found"));

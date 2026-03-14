@@ -2,6 +2,7 @@ package com.jpmc.ledger.controller;
 
 import com.jpmc.ledger.dto.ApiResponse;
 import com.jpmc.ledger.dto.CreateAccountRequest;
+import com.jpmc.ledger.dto.DepositRequest;
 import com.jpmc.ledger.dto.TransferRequest;
 import com.jpmc.ledger.entity.Account;
 import com.jpmc.ledger.entity.Transaction;
@@ -27,6 +28,14 @@ public class LedgerController {
         Account account = ledgerService.createAccount(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(account));
+    }
+
+    @PostMapping("/accounts/{id}/deposit")
+    public ResponseEntity<ApiResponse<Account>> deposit(
+            @PathVariable String id,
+            @Valid @RequestBody DepositRequest request) {
+        Account account = ledgerService.deposit(id, request);
+        return ResponseEntity.ok(ApiResponse.success(account));
     }
 
     @GetMapping("/accounts/{id}/balance")
