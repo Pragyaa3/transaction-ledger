@@ -2,6 +2,11 @@
 
 A production-style financial transaction ledger built with Spring Boot, demonstrating core enterprise Java patterns used in banking and fintech systems.
 
+## Live API
+Base URL: `https://transaction-ledger-production-6139.up.railway.app`
+
+Test it: `curl https://transaction-ledger-production-6139.up.railway.app/api/v1/health`
+
 ## Tech Stack
 
 - Java 17 + Spring Boot 3.5
