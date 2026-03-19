@@ -63,4 +63,10 @@ public class LedgerController {
     public ResponseEntity<ApiResponse<String>> health() {
         return ResponseEntity.ok(ApiResponse.success("Ledger service is running"));
     }
+
+    @GetMapping("/")
+    public ResponseEntity<ApiResponse<String>> root() {
+        return ResponseEntity.ok(ApiResponse.success(
+                "Transaction Ledger API is running. See /api/v1/health for status."));
+    }
 }
