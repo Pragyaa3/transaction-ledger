@@ -1,0 +1,2 @@
+[deploy]
+startCommand = "java -Xmx300m -Xms100m -jar target/*.jar"
